@@ -23,7 +23,7 @@ def page_mildew_detector_body():
 
     st.write("---")
 
-    images_buffer = st.file_uploader('Upload leaf samples. You may select more than one.',
+    images_buffer = st.file_uploader('Upload leaf samples. You may select one at a time.',
                                         type='jpeg',accept_multiple_files=True)
    
     if images_buffer is not None:
@@ -35,7 +35,7 @@ def page_mildew_detector_body():
             img_array = np.array(img_pil)
             st.image(img_pil, caption=f"Image Size: {img_array.shape[1]}px width x {img_array.shape[0]}px height")
 
-            version = 'v1'
+            version = 'v2'
             resized_img = resize_input_image(img=img_pil, version=version)
             pred_proba, pred_class = load_model_and_predict(resized_img, version=version)
             plot_predictions_probabilities(pred_proba, pred_class)

@@ -15,7 +15,7 @@ def page_leaf_visualizer_body():
         f"* The client is interested in having a study that visually "
         f"differentiates a powdery mildew from an healthy leaf.")
     
-    version = 'v1'
+    version = 'v2'
     if st.checkbox("Difference between average and variability image"):
       
       avg_powdery_mildew = plt.imread(f"outputs/avg_var_powdery_mildew.png")
