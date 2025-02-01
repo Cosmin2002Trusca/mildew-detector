@@ -1,117 +1,95 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Mildew Detector
 
-## Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for the Cherry Leaves project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
-
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-1. Log into your cloud IDE with your GitHub account.
-
-1. On your Dashboard, click on the New Workspace button
-
-1. Paste in the URL you copied from GitHub earlier
-
-1. Click Create
-
-1. Wait for the workspace to open. This can take a few minutes.
-
-1. Open a new terminal and `pip3 install -r requirements.txt`
-
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
-
-1. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.8.18 as it inherits from the workspace, so it will be Python-3.8.18 as installed by our template. To confirm this, you can use `! python --version` in a notebook code cell.
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, then you can create a new one with _Regenerate API Key_.
+This project focuses on developing an AI-powered system to detect mildew on cherry leaves. Using image processing and machine learning, the system identifies early signs of infection, allowing farmers to take timely action. The detector is trained on a dataset of healthy and infected leaves, leveraging computer vision techniques to classify and analyze mildew presence. The goal is to enhance agricultural efficiency, reduce pesticide use, and improve crop health through an accessible, automated detection method.
 
 ## Dataset Content
-
-- The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/cherry-leaves). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace.
-- The dataset contains +4 thousand images taken from the client's crop fields. The images show healthy cherry leaves and cherry leaves that have powdery mildew, a fungal disease that affects many plant species. The cherry plantation crop is one of the finest products in their portfolio, and the company is concerned about supplying the market with a compromised quality product.
+The dataset is **Cherry leaves** dataset from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves)
 
 ## Business Requirements
+The primary objective of this project is to develop a machine learning model for the  detection of Powdery Mildew in cherry leaves. The model should assist fermers in making quicker and more accurate diagnoses.
 
-The cherry plantation crop from Farmy & Foods is facing a challenge where their cherry plantations have been presenting powdery mildew. Currently, the process is manual verification if a given cherry tree contains powdery mildew. An employee spends around 30 minutes in each tree, taking a few samples of tree leaves and verifying visually if the leaf tree is healthy or has powdery mildew. If there is powdery mildew, the employee applies a specific compound to kill the fungus. The time spent applying this compound is 1 minute. The company has thousands of cherry trees located on multiple farms across the country. As a result, this manual process is not scalable due to the time spent in the manual process inspection.
+Requirements:
 
-To save time in this process, the IT team suggested an ML system that detects instantly, using a leaf tree image, if it is healthy or has powdery mildew. A similar manual process is in place for other crops for detecting pests, and if this initiative is successful, there is a realistic chance to replicate this project for all other crops. The dataset is a collection of cherry leaf images provided by Farmy & Foods, taken from their crops.
+- The client is interested in conducting a study to visually differentiate a cherry leaf that is healthy from one that contains powdery mildew.
+- The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew. understand the relevant discoveries.
+- The Streamlit Dashboard will be developed that will finally serve as a platform for the presentation of the results of first two business objectives, together with the interactive implementation of the prediction of the unseen MRI image.
 
-- 1 - The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one with powdery mildew.
-- 2 - The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew.
+**Business Requirement 1: Data Visualization**
+- As a client, I can navigate easily through an interactive dashboard so that I can view and understand the data.
+- As a client, I can view average images,image differences and variabilities between a healthy cherry leaf and the one with powdery mildew, so that I can identify which is which more easily.
+- As a client, I can view an image montage of healthy cherry leaves and the one with Powdery Mildew, so I can make the visual differentiation.
 
-## Hypothesis and how to validate?
-
-- List here your project hypothesis(es) and how you envision validating it (them).
-
-## The rationale to map the business requirements to the Data Visualisations and ML tasks
-
-- List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+**Business Requirement 2: Classification**
+- As a client, I can upload images of the cherry leaves to the dashboard so that I can run the ML model and an immediate accurate prediction of the posible Powdery Mildew.
+- As a client, I can save model predictions so that I can have a documented history of the made predictions.
 
 ## ML Business Case
 
-- In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+- The client is focused on accurately predicting from a given cherry leaf image whether Powdery Mildew is present. This business objective will be achieved through the development and deployment of a TensorFlow deep learning pipeline, trained on a dataset of cherry leaves classified as either having Powdery mildew or not.
+- This TensorFlow pipeline will employ a convolutional neural network (CNN), a type of neural network particularly effective at identifying patterns and key features in image data, utilizing convolution and pooling layer pairs.
+- The ultimate goal of this machine learning pipeline is a binary classification model. The desired outcome is a model capable of successfully distinguishing cherry leaves as either having a Powdery mildew or not.
+- The model's output will be a classification label indicating the presence or absence of Powdery Mildew, based on the probability calculated by the model.
+- The primary metrics for evaluating the success of this machine learning model will be overall model accuracy (measured by the F1 score) and recall for correctly identifying Powdery Mildew.
+
+## ML Model Development
+
+This CNN model is designed for binary classification of images, likely distinguishing between healthy and mildew-infected cherry leaves. It consists of four convolutional blocks with increasing filter sizes (64, 128, 256, 256) to extract hierarchical features, each followed by batch normalization and max pooling for stability and downsampling. The extracted features are flattened and passed through two fully connected layers (512 and 256 neurons) with dropout (0.4 and 0.3) to prevent overfitting. The final output layer uses a sigmoid activation for binary classification. The model is compiled with binary cross-entropy loss, an Adam optimizer (learning rate 0.0001), and accuracy as the metric. Training is optimized with early stopping and learning rate reduction to improve generalization.
 
 ## Dashboard Design
 
-- List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items, that your dashboard library supports.
-- Finally, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project, you were confident you would use a given plot to display an insight, but later, you chose another plot type).
+- This project is presented through a Streamlit dashboard web application that consists of five app pages. The client can effortlessly navigate through these pages using the interactive menu located on the left side of the page.
+- **Quick Project Summary** - The homepage of the project provides a fundamental overview of the business process that motivates the creation of this project.
+
+- **Leaf Visualizer** - The first business objective of the project is addressed by the Leaf Visualizer page, which focuses on Data Analysis. This page includes plots that can be toggled on and off using the built-in toolbar.
+
+* Additionally, this app page offers a tool for creating image montages. Users can select a label class (tumor or non-tumor) and view a montage generated through graphical presentation of random validation set images.
+
+- **Model Performance** - The dataset size and label frequencies, which indicate the initial imbalance of the target, are documented on this page. Additionally, the history and evaluation of the project's machine learning model are provided. The paired graphs display the validation loss and accuracy per epoch, showcasing the model's progress over time.
+
+- **Mildew Detector** - tool fulfills the second ML business objective of the project. It provides access to the original raw dataset, allowing users to download cherry leaves images. These images can then be uploaded to receive a class prediction output generated by the model.
+
+- **Project Hypothesis**
+This application page showcases written documentation of the project's hypotheses 
 
 ## Unfixed Bugs
-
-- You will need to mention unfixed bugs and why they were unfixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable for consideration, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed.
+* There are no unfixed bugs.
 
 ## Deployment
+### Render
 
-### Heroku
+* The App live link is: [https://mildew-detector-54t8.onrender.com](https://mildew-detector-54t8.onrender.com)
+* The project was deployed to Heroku using the following steps.
 
-- The App live link is: `https://YOUR_APP_NAME.herokuapp.com/`
-- Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-- The project was deployed to Heroku using the following steps.
+1. Log in to Render and create an App
+2. Connect you app to Git Hub
+3. Introduce the running commmand "streamlit run app.py"
+5. click on deploy
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
-6. If the slug size is too large, then add large files not required for the app to the .slugignore file.
+## TESTING
+### Manual Testing
 
-## Main Data Analysis and Machine Learning Libraries
+ As a client, I can navigate easily through an interactive dashboard so that I can view and understand the data.
 
-- Here, you should list the libraries used in the project and provide an example(s) of how you used these libraries.
+**MRI Visualizer Page**
+- As a client, I can view visual graphs of average images,image differences and variabilities between images of a healthy leaves and the ones with Powdery Mildew, so that I can identify which is which more easily.
 
-## Credits
+- As a client, I can view an image montage of the images of the healthy leaves and the one with Powdery Mildew, so I can make the visual differentiation.
 
-- In this section, you need to reference where you got your content, media and from where you got extra help. It is common practice to use code from other repositories and tutorials. However, it is necessary to be very specific about these sources to avoid plagiarism.
-- You can break the credits section up into Content and Media, depending on what you have included in your project.
+**Brain Tumor Detection Page**
+-  As a client, I can upload image(s) of the cherry leaves to the dashboard so that I can run the ML model and an immediate accurate prediction of the posible Powdery Mildew.
 
-### Content
+- As a client, I can save model predictions in a timestamped CSV file so that I can have a documented history of the made predictions.
 
-- The text for the Home page was taken from Wikipedia Article A.
-- Instructions on how to implement form validation on the Sign-Up page were taken from [Specific YouTube Tutorial](https://www.youtube.com/).
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/).
+### Automated Unit Tests
+- There were no automated unit testing. It is planned for the future development.
 
-### Media
+### Validation
+- Python Code was validated as conforming to PEP8 standards using: [https://pep8ci.herokuapp.com/]
 
-- The photos used on the home and sign-up page are from This Open-Source site.
-- The images used for the gallery page were taken from this other open-source site.
+## Credits 
 
-## Acknowledgements (optional)
+* Through the whole project I was following particularly the CI's Malaria Detection walkthrough and example.
 
-- Thank the people who provided support throughout this project.
+
+## Acknowledgements
+* To my mentor, Mo Shami, for his invaluable suggestions and guidance throughout this project. His expertise and insights have been instrumental in shaping the direction and success of this project.
