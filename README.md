@@ -58,7 +58,7 @@ This application page showcases written documentation of the project's hypothese
 ### Render
 
 * The App live link is: [https://mildew-detector-54t8.onrender.com](https://mildew-detector-54t8.onrender.com)
-* The project was deployed to Heroku using the following steps.
+* The project was deployed to Render using the following steps.
 
 1. Log in to Render and create an App
 2. Connect you app to Git Hub
