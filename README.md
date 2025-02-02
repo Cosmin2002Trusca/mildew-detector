@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Dataset Content](#dataset-content)
+- [Project Hypothesis](#project-hypothesis)
 - [Business Requirements](#business-requirements)
   - [Business Requirement 1: Data Visualization](#business-requirement-1-data-visualization)
   - [Business Requirement 2: Classification](#business-requirement-2-classification)
@@ -29,6 +30,13 @@ This project focuses on developing an **AI-powered system** to detect **Powdery 
 
 ## Dataset Content
 The dataset used is the **Cherry Leaves** dataset from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves), containing labeled images of **healthy and mildew-infected cherry leaves**.
+
+## Project Hypothesis
+The hypothesis of this project is based on the assumption that **Powdery Mildew** causes distinct visual changes in cherry leaves, such as:
+
+- **Presence of white powder**: Leaves infected with powdery mildew are expected to have visible white powder on their surface.
+- **Damage to the leaves**: Infected leaves should show visible damage or discoloration, differentiating them from healthy leaves.
+- **Environmental impact**: Factors like **humidity** and **temperature** could influence the visibility and severity of mildew symptoms, affecting the appearance of the infected leaves.
 
 ## Business Requirements
 ### Business Requirement 1: Data Visualization
